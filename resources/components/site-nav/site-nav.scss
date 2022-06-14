@@ -1,0 +1,37 @@
+.SiteNav {
+    display: flex;
+    list-style: none;
+
+    &--column {
+        flex-flow: column;
+
+        %SiteNav--column__listItem {
+            :root & {
+                margin-right: unset;
+            }
+        
+            &:not(:last-child) {
+                margin-bottom: 1.5em;
+            }
+        }
+    }
+
+    &__listItem {
+        @extend %SiteNav--column__listItem;
+        
+        &:not(:last-child) {
+            margin-right: 24px;
+        }
+    }
+
+    &__item {
+        line-height: 1.2;
+        color: $color-gray;
+
+        &:hover,
+        &:focus,
+        &:active {
+            color: $color-black;
+        }
+    }
+}

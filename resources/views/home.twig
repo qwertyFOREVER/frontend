@@ -1,0 +1,59 @@
+{% extends '@layouts/base.twig' %}
+
+{% set scope = {
+    slides: [
+        {
+            desktopImage: 'images/slides/slide-desktop.png' | asset,
+            mobileImage: 'images/slides/slide-mobile.png' | asset,
+            title: 'Проектируем<br>и строим загородные дома',
+            text: '1Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.',
+        },
+        {
+            desktopImage: 'images/slides/slide-desktop.png' | asset,
+            mobileImage: 'images/slides/slide-mobile.png' | asset,
+            title: 'Lorem ipsum dolor sit amet',
+            text: '2Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.',
+
+        },
+        {
+            desktopImage: 'images/slides/slide-desktop.png' | asset,
+            mobileImage: 'images/slides/slide-mobile.png' | asset,
+            title: 'Curabitur tincidunt ut arcu eu auctor',
+            text: '3Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.',
+        },
+    ],
+    featuredSection: {
+        title: 'Каждый проект<br>для нас — важный',
+        text: 'Мы строительная компания полного цикла.',
+        items: [
+            {
+                icon: 'icons/house-green.svg'|asset,
+                title: '57 домов',
+                text: 'спроектировали и построили “под ключ”',
+            },
+            {
+                icon: 'icons/calendar-green.svg'|asset,
+                title: '14 лет',
+                text: 'мы на рынке загородного строительства',
+            },
+        ],
+    },
+} %}
+
+{% block main %}
+    <div class="Container">
+        <div class="Layout__section Layout__section--slider">
+            {% include '@components/slider/slider.twig' with {
+                items: scope.slides,
+            } %}
+        </div>
+
+        <div class="Layout__section Layout__section--featured">
+            {% include '@components/featured-section/featured-section.twig' with {
+                title: scope.featuredSection.title,
+                text: scope.featuredSection.text,
+                items: scope.featuredSection.items,
+            } %}
+        </div>
+    </div>
+{% endblock %}
